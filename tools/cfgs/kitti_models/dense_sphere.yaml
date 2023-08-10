@@ -59,7 +59,7 @@ DATA_CONFIG:
           SIZE_DIVISOR: 32
 
 MODEL:
-    NAME: DenseSphere
+    NAME: GraphRCNN
 
     FREEZE_LAYERS: ['DynVFE', 'VoxelBackBone8x', 'HeightCompression', 'BaseBEVBackbone', 'AnchorHeadSingle', 'DLASeg']
     
@@ -128,7 +128,7 @@ MODEL:
             }
 
     ROI_HEAD:
-        NAME: DenseSphereHead
+        NAME: GraphRCNNHead
         CLASS_AGNOSTIC: True
 
         NMS_CONFIG:
@@ -164,7 +164,7 @@ MODEL:
             MLPS: [64, 64, 128]
             CALIB_DIM: 128
             EXP_MLPS: [128, 512]
-            K: 4
+            K: 8
             USE_FEATS_DIS: False
             USE_REDUCTION: False
             USE_SHORT_CUT: False
@@ -211,11 +211,11 @@ MODEL:
 
 
 OPTIMIZATION:
-    BATCH_SIZE_PER_GPU: 4
-    NUM_EPOCHS: 80
+    BATCH_SIZE_PER_GPU: 1
+    NUM_EPOCHS: 40
 
     OPTIMIZER: adam_onecycle
-    LR: 0.003
+    LR: 0.0001
     WEIGHT_DECAY: 0.01
     MOMENTUM: 0.9
 
