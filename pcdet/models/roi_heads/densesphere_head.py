@@ -54,18 +54,48 @@ class AttnGNNLayer(nn.Module):
                 nn.Sequential(
                     nn.Conv2d(in_channels*2, mlps[i], kernel_size=1, bias=False),
                     nn.BatchNorm2d(mlps[i]),
-                    nn.ReLU()
+                    nn.GELU()
                 )
             )
             in_channels = mlps[i]
         in_channels = sum(mlps)
         self.calib = nn.Sequential(
-            nn.Conv1d(in_channels, model_cfg.CALIB_DIM, kernel_size=1, bias=False),
+            # nn.Conv1d(in_channels, model_cfg.CALIB_DIM, kernel_size=1, bias=False),
+            nn.Conv1d(448, model_cfg.CALIB_DIM, kernel_size=1, bias=False),
             nn.BatchNorm1d(model_cfg.CALIB_DIM),
             nn.ReLU(),
-            nn.Conv1d(model_cfg.CALIB_DIM, in_channels, kernel_size=1)
+            nn.Conv1d(model_cfg.CALIB_DIM, 448, kernel_size=1)
         )
-        self.expansion = network_utils.make_fc_layers(model_cfg.EXP_MLPS, in_channels, linear=False)
+        self.edge_layes_1 = nn.ModuleList()
+        in_channels = input_channels
+        for i in range(len(mlps)):
+            self.edge_layes_1.append(
+                nn.Sequential(
+                    nn.Conv2d(in_channels*2, int(mlps[i]/2), kernel_size=1, bias=False),
+                    nn.BatchNorm2d(int(mlps[i]/2)),
+                    nn.GELU(),
+                    nn.Dropout(0.2)
+                )
+            )
+            in_channels = int(mlps[i]/2)
+        in_channels = int(sum(mlps)/2)
+
+        self.edge_layes_2 = nn.ModuleList()
+        in_channels = input_channels
+        for i in range(len(mlps)):
+            self.edge_layes_2.append(
+                nn.Sequential(
+                    nn.Conv2d(in_channels*2, int(mlps[i]/4), kernel_size=1, bias=False),
+                    nn.BatchNorm2d(int(mlps[i]/4)),
+                    nn.GELU(),
+                    nn.Dropout(0.1)
+                )
+            )
+            in_channels = int(mlps[i]/4)
+        in_channels = int(sum(mlps)/4)
+        
+        self.expansion = network_utils.make_fc_layers(model_cfg.EXP_MLPS, 448, linear=False)
+
         in_channels = model_cfg.EXP_MLPS[-1]
         self.reduction = nn.Sequential(
             nn.Conv1d(in_channels, self.out_channel, kernel_size=1, bias=False),
@@ -116,8 +146,30 @@ class AttnGNNLayer(nn.Module):
             x = edge_layer(x)
             x = x.max(dim=-1)[0]
             x_list.append(x)
-        x = torch.cat(x_list, dim=1)
+        x_row = torch.cat(x_list, dim=1)
+        
+        x = torch.cat([xyz, feats], dim=1)
+        x_list_1 = []
+        for edge_layer in self.edge_layes_1:
+            x = self.get_graph_feature(x, idx)
+            x = edge_layer(x)
+            x = x.max(dim=-1)[0]
+            x_list_1.append(x)
+        x_1 = torch.cat(x_list_1, dim=1)
+        
+        x = torch.cat([xyz, feats], dim=1)
+        x_list_2 = []
+        for edge_layer in self.edge_layes_2:
+            x = self.get_graph_feature(x, idx)
+            x = edge_layer(x)
+            x = x.max(dim=-1)[0]
+            x_list_2.append(x)
+        x_2 = torch.cat(x_list_2, dim=1)    
+                
+        x = torch.cat((x_row, x_1, x_2), dim=1)
+             
         x = torch.sigmoid(self.calib(x)) * x
+        
         x = self.expansion(x).max(dim=-1)[0].view(B, M, -1).permute(0, 2, 1)
         if self.reduction is not None:
             x = self.reduction(x)
@@ -126,7 +178,7 @@ class AttnGNNLayer(nn.Module):
         return x
 
 
-class DenseSphereHead(RoIHeadTemplate):
+class GraphRCNNHead(RoIHeadTemplate):
     def __init__(self, input_channels, model_cfg, point_cloud_range, num_class=1, **kwargs):
         super().__init__(num_class=num_class, model_cfg=model_cfg)
         self.model_cfg = model_cfg

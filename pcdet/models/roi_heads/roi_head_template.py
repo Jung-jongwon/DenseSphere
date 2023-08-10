@@ -154,6 +154,7 @@ class RoIHeadTemplate(nn.Module):
                 reg_targets.unsqueeze(dim=0),
             )  # [B, M, 7]
             rcnn_loss_reg = (rcnn_loss_reg.view(rcnn_batch_size, -1) * fg_mask.unsqueeze(dim=-1).float()).sum() / max(fg_sum, 1)
+            # rcnn_loss_reg = (rcnn_loss_reg.view(rcnn_batch_size, -1)).sum() / max(fg_sum, 1)
             rcnn_loss_reg = rcnn_loss_reg * loss_cfgs.LOSS_WEIGHTS['rcnn_reg_weight']
             tb_dict['rcnn_loss_reg'] = rcnn_loss_reg.item()
         else:
@@ -182,8 +183,12 @@ class RoIHeadTemplate(nn.Module):
                 rcnn_boxes3d[:, 0:7],
                 gt_of_rois_src[fg_mask][:, 0:7]
             )
+            if (max(gt_of_rois_src[fg_mask][:, 0:7][:,3]) - min(gt_of_rois_src[fg_mask][:, 0:7][:,1])) >=40 :
+                weights_gamma = 1
+            else :
+                weights_gamma = 5
             loss_corner = loss_corner.mean()
-            loss_corner = loss_corner * loss_cfgs.LOSS_WEIGHTS['rcnn_corner_weight']
+            loss_corner = loss_corner * weights_gamma
 
             rcnn_loss_reg += loss_corner
             tb_dict['rcnn_loss_corner'] = loss_corner.item()
