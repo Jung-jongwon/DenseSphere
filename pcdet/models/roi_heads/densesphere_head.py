@@ -178,7 +178,7 @@ class AttnGNNLayer(nn.Module):
         return x
 
 
-class GraphRCNNHead(RoIHeadTemplate):
+class DenseSphereHead(RoIHeadTemplate):
     def __init__(self, input_channels, model_cfg, point_cloud_range, num_class=1, **kwargs):
         super().__init__(num_class=num_class, model_cfg=model_cfg)
         self.model_cfg = model_cfg
