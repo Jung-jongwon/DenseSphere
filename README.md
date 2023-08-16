@@ -25,3 +25,12 @@ modal 3D object detection models through several experiments.
 
 
 ![그림24](https://github.com/Jung-jongwon/DenseSphere/assets/85870991/bd03c01b-9322-4ea1-bfeb-9bac9e23b432)
+
+
+## Training & Testing
+```
+# train
+bash scripts/dist_train.sh
+
+# test
+bash scripts/dist_test.sh
