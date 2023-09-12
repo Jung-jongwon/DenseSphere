@@ -23,6 +23,8 @@ pyramid blocks for various receptive fields. We demonstrate the
 performance of DenseSphere by comparing it with other multi-
 modal 3D object detection models through several experiments.
 
+pretrained model - [DenseSpehere](https://drive.google.com/file/d/1edJFqp9LXBWVtH6aY-gt4hI8GTLyROS6/view?usp=drive_link)
+
 
 ![그림24](https://github.com/Jung-jongwon/DenseSphere/assets/85870991/bd03c01b-9322-4ea1-bfeb-9bac9e23b432)
 
