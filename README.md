@@ -29,6 +29,9 @@ pretrained model - [DenseSpehere](https://drive.google.com/file/d/1edJFqp9LXBWVt
 ![그림24](https://github.com/Jung-jongwon/DenseSphere/assets/85870991/bd03c01b-9322-4ea1-bfeb-9bac9e23b432)
 
 
+### Comparison of visual detection performance on the KITTI validation dataset
+![fig_6](https://github.com/Jung-jongwon/DenseSphere/assets/85870991/d06a334e-de30-455f-a7b5-c077a9206c25)
+
 ## Training & Testing
 ```
 # train
@@ -38,7 +41,6 @@ bash scripts/dist_train.sh
 bash scripts/dist_test.sh
 
 
-Comparison of visual detection performance on the KITTI validation dataset
-![fig_6](https://github.com/Jung-jongwon/DenseSphere/assets/85870991/d06a334e-de30-455f-a7b5-c077a9206c25)
+
 
 
