@@ -39,8 +39,3 @@ bash scripts/dist_train.sh
 
 # test
 bash scripts/dist_test.sh
-
-
-
-
-
