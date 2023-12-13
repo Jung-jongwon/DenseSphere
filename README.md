@@ -23,22 +23,24 @@ pyramid blocks for various receptive fields. We demonstrate the
 performance of DenseSphere by comparing it with other multi-
 modal 3D object detection models through several experiments.
 
-pretrained model - [DenseSpehere](https://drive.google.com/file/d/1edJFqp9LXBWVtH6aY-gt4hI8GTLyROS6/view?usp=drive_link)
-
-![fig_hor_8_det](https://github.com/Jung-jongwon/DenseSphere/assets/85870991/899a0d7d-99bc-4903-aafc-738a1b6824ac)
-Comparison of visual detection performance on the KITTI validation dataset at an $s_{f}$ of 8 in horizontal resolution. (a) Visual detection results of TED-M. (b) Visual detection results of VirConv-S. (c) Visual detection results of DenseSphere.
-![fig_hor_16_det](https://github.com/Jung-jongwon/DenseSphere/assets/85870991/dfddc14a-633a-4b84-8f31-e83600a89151)
-Comparison of visual detection performance on the KITTI validation dataset at an $s_{f}$ of 16 in horizontal resolution. (a) Visual detection results of TED-M. (b) Visual detection results of VirConv-S. (c) Visual detection results of DenseSphere.
-
-![fig_ver_32_det](https://github.com/Jung-jongwon/DenseSphere/assets/85870991/ea345159-3937-41de-9b5f-bbfd40a7fb79)
-Comparison of visual detection performance on the KITTI validation dataset at a \textit{ch} of 32 in vertical resolution. (a) Visual detection results of TED-M. (b) Visual detection results of VirConv-S. (c) Visual detection results of DenseSphere.
-![fig_ver_16_det](https://github.com/Jung-jongwon/DenseSphere/assets/85870991/ccfb6abb-1916-4b6d-860d-704801faff4d)
-Comparison of visual detection performance on the KITTI validation dataset at a \textit{ch} of 16 in vertical resolution. (a) Visual detection results of TED-M. (b) Visual detection results of VirConv-S. (c) Visual detection results of DenseSphere.
-
-
+pretrained model - 
+Horizontal - [DenseSpehere(horizontal)](https://drive.google.com/file/d/1edJFqp9LXBWVtH6aY-gt4hI8GTLyROS6/view?usp=drive_link)
+Vertical - [DenseSpehere](vertical)(https://drive.google.com/file/d/1edJFqp9LXBWVtH6aY-gt4hI8GTLyROS6/view?usp=drive_link)
 
 ### Comparison of visual detection performance on the KITTI validation dataset
-![fig_6](https://github.com/Jung-jongwon/DenseSphere/assets/85870991/d06a334e-de30-455f-a7b5-c077a9206c25)
+
+![fig_hor_8_det](https://github.com/Jung-jongwon/DenseSphere/assets/85870991/899a0d7d-99bc-4903-aafc-738a1b6824ac)
+Comparison of visual detection performance on the KITTI validation dataset at an s_f of 8 in horizontal resolution. (a) Visual detection results of TED-M. (b) Visual detection results of VirConv-S. (c) Visual detection results of DenseSphere.
+
+![fig_hor_16_det](https://github.com/Jung-jongwon/DenseSphere/assets/85870991/dfddc14a-633a-4b84-8f31-e83600a89151)
+Comparison of visual detection performance on the KITTI validation dataset at an s_f of 16 in horizontal resolution. (a) Visual detection results of TED-M. (b) Visual detection results of VirConv-S. (c) Visual detection results of DenseSphere.
+
+![fig_ver_32_det](https://github.com/Jung-jongwon/DenseSphere/assets/85870991/ea345159-3937-41de-9b5f-bbfd40a7fb79)
+Comparison of visual detection performance on the KITTI validation dataset at a ch of 32 in vertical resolution. (a) Visual detection results of TED-M. (b) Visual detection results of VirConv-S. (c) Visual detection results of DenseSphere.
+
+![fig_ver_16_det](https://github.com/Jung-jongwon/DenseSphere/assets/85870991/ccfb6abb-1916-4b6d-860d-704801faff4d)
+Comparison of visual detection performance on the KITTI validation dataset at a ch of 16 in vertical resolution. (a) Visual detection results of TED-M. (b) Visual detection results of VirConv-S. (c) Visual detection results of DenseSphere.
+
 
 
 
