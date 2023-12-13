@@ -24,7 +24,9 @@ performance of DenseSphere by comparing it with other multi-
 modal 3D object detection models through several experiments.
 
 pretrained model - 
+
 Horizontal - [DenseSpehere(horizontal)](https://drive.google.com/file/d/1edJFqp9LXBWVtH6aY-gt4hI8GTLyROS6/view?usp=drive_link)
+
 Vertical - [DenseSpehere](vertical)(https://drive.google.com/file/d/1edJFqp9LXBWVtH6aY-gt4hI8GTLyROS6/view?usp=drive_link)
 
 ### Comparison of visual detection performance on the KITTI validation dataset
