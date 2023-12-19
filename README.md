@@ -25,7 +25,7 @@ modal 3D object detection models through several experiments.
 
 ### Pretrained model - 
 
-- Horizontal(x8) [DenseSphere(horizontal)](https://drive.google.com/file/d/1edJFqp9LXBWVtH6aY-gt4hI8GTLyROS6/view?usp=drive_link)
+- Horizontal(s_{f}=8) [DenseSphere(horizontal)](https://drive.google.com/file/d/1edJFqp9LXBWVtH6aY-gt4hI8GTLyROS6/view?usp=drive_link)
 
 - Vertical(x8) [DenseSphere(vertical)](https://drive.google.com/file/d/1edJFqp9LXBWVtH6aY-gt4hI8GTLyROS6/view?usp=drive_link)
 
