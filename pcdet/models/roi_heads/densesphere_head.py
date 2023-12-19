@@ -7,6 +7,7 @@ from torch.nn import functional as F
 import numpy as np
 from ..model_utils import network_utils
 from ..fusion_layers import PointSample
+from ..detectors import dense_sphere
 
 
 class ShortcutLayer(nn.Module):
@@ -39,7 +40,7 @@ class ShortcutLayer(nn.Module):
         return x
 
 
-class AttnGNNLayer(nn.Module):
+class GNNLayer(nn.Module):
     def __init__(self, input_channels, model_cfg):
         super().__init__()
         self.model_cfg = model_cfg
@@ -217,7 +218,7 @@ class DenseSphereHead(RoIHeadTemplate):
             self.use_img = False
             
         input_channels = model_cfg.ATTN_GNN_CONFIG.pop('IN_DIM')
-        self.attn_gnn_layer = AttnGNNLayer(input_channels, model_cfg.ATTN_GNN_CONFIG)
+        self.attn_gnn_layer = GNNLayer(input_channels, model_cfg.ATTN_GNN_CONFIG)
 
         self.shared_fc_layer = nn.Sequential(
             nn.Conv1d(self.attn_gnn_layer.out_channel, 256, kernel_size=1, bias=False),
@@ -316,6 +317,11 @@ class DenseSphereHead(RoIHeadTemplate):
         
         if self.use_img:
             batch_dict['image_features'] = self.img_conv(batch_dict['image_features'])  # (B, 32, H/4, W/4)
+            if batch_dict['sub_sampling']!=0:
+                _, feats, _, _ = dense_sphere.point_upsample(batch_dict)
+                roi_feats_global=torch.cat([roi_feats_global, feats], dim=-1)
+            else :
+                pass
             batch_dict['sampled_points'] = roi_feats_global.view(B, -1, 3)  # (B, M*K, 3)
             roi_img_feats = self.point_sample(batch_dict)
             roi_img_feats = roi_img_feats.view(B * M, -1, roi_img_feats.shape[-1])  # (B*M, K, C)
