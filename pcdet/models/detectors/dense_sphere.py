@@ -1,4 +1,5 @@
 from .detector3d_template import Detector3DTemplate
+import point_upsampler.data as point_upsample
 
 
 class DenseSphere(Detector3DTemplate):
@@ -37,3 +38,15 @@ class DenseSphere(Detector3DTemplate):
         loss += loss_rcnn
         
         return loss, tb_dict, disp_dict
+    
+    def point_upsample(self, batch_dict):
+        for cur_module in self.module_list:
+            batch_dict = cur_module(batch_dict)
+        
+        if batch_dict['sub_sampling']!=0:
+            coords, feats, coords_T, coors_int = point_upsample.Dataset(batch_dict['sampled_points'])
+            return coords, feats, coords_T, coors_int
+        else:
+            pass
+            
+        
