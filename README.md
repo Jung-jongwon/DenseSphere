@@ -27,8 +27,7 @@ modal 3D object detection models through several experiments.
 
 - Horizontal(subsampling = 8) [DenseSphere(horizontal)](https://drive.google.com/file/d/1edJFqp9LXBWVtH6aY-gt4hI8GTLyROS6/view?usp=drive_link)
 
-- Vertical(channels = 16) [DenseSphere(vertical)](https://drive.google.com/file/d/1edJFqp9LXBWVtH6aY-gt4hI8GTLyROS6/view?usp=drive_link)
-
+- Vertical(channels = 16) [DenseSphere(vertical)](https://drive.google.com/file/d/1CmHmd0E_4qSsdX1cdQlzspn04qO7E4xe/view?usp=drive_link)
 ### Comparison of visual detection performance on the KITTI validation dataset
 
 ![fig_hor_8_det](https://github.com/Jung-jongwon/DenseSphere/assets/85870991/899a0d7d-99bc-4903-aafc-738a1b6824ac)
