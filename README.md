@@ -28,6 +28,7 @@ modal 3D object detection models through several experiments.
 - Horizontal(subsampling = 8) [DenseSphere(horizontal)](https://drive.google.com/file/d/1edJFqp9LXBWVtH6aY-gt4hI8GTLyROS6/view?usp=drive_link)
 
 - Vertical(channels = 16) [DenseSphere(vertical)](https://drive.google.com/file/d/1CmHmd0E_4qSsdX1cdQlzspn04qO7E4xe/view?usp=drive_link)
+- 
 ### Comparison of visual detection performance on the KITTI validation dataset
 
 ![fig_hor_8_det](https://github.com/Jung-jongwon/DenseSphere/assets/85870991/899a0d7d-99bc-4903-aafc-738a1b6824ac)
@@ -41,6 +42,8 @@ Comparison of visual detection performance on the KITTI validation dataset at a 
 
 ![fig_ver_16_det](https://github.com/Jung-jongwon/DenseSphere/assets/85870991/ccfb6abb-1916-4b6d-860d-704801faff4d)
 Comparison of visual detection performance on the KITTI validation dataset at a ch of 16 in vertical resolution. (a) Visual detection results of TED-M. (b) Visual detection results of VirConv-S. (c) Visual detection results of DenseSphere.
+
+### Comparison of visual detection performance on the nuScenes validation dataset
 
 ![figure_nu_hor](https://github.com/Jung-jongwon/DenseSphere/assets/85870991/52e3c862-7f47-4fc1-8086-09c16b08cd85)
 Comparison of visual detection performance on the nuScenes validation dataset at a ch of 32 in horizontal resolution. (a) Visual detection results of TED-M. (b) Visual detection results of VirConv-S. (c) Visual detection results of DenseSphere.
