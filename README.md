@@ -42,6 +42,12 @@ Comparison of visual detection performance on the KITTI validation dataset at a 
 ![fig_ver_16_det](https://github.com/Jung-jongwon/DenseSphere/assets/85870991/ccfb6abb-1916-4b6d-860d-704801faff4d)
 Comparison of visual detection performance on the KITTI validation dataset at a ch of 16 in vertical resolution. (a) Visual detection results of TED-M. (b) Visual detection results of VirConv-S. (c) Visual detection results of DenseSphere.
 
+![figure_nu_hor](https://github.com/Jung-jongwon/DenseSphere/assets/85870991/52e3c862-7f47-4fc1-8086-09c16b08cd85)
+Comparison of visual detection performance on the nuScenes validation dataset at a ch of 32 in horizontal resolution. (a) Visual detection results of TED-M. (b) Visual detection results of VirConv-S. (c) Visual detection results of DenseSphere.
+
+![figure_nu_ver](https://github.com/Jung-jongwon/DenseSphere/assets/85870991/843dc1b7-5513-4a3d-aedd-347f5e1117ce)
+Comparison of visual detection performance on the nuScenes validation dataset at a ch of 16 in vertical resolution. (a) Visual detection results of TED-M. (b) Visual detection results of VirConv-S. (c) Visual detection results of DenseSphere.
+
 
 
 
